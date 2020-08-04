@@ -1,8 +1,9 @@
 {
 	"pages": [{
-		"path": "pages/index/index",
+		"path": "pages/home/Home",
 		"style": {
-			"navigationBarTitleText": "uni-ui基础项目"
+			"navigationBarTitleText": "首页",
+			"navigationBarBackgroundColor":"#00bcd4"
 		}
 	}],
 	"globalStyle": {
