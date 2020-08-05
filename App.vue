@@ -14,4 +14,5 @@
 
 <style>
 	@import url("./static/style/iconfont.css");
+	@import url("./static/style/reset.css");
 </style>

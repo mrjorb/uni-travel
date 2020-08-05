@@ -3,7 +3,10 @@
 		"path": "pages/home/Home",
 		"style": {
 			"navigationBarTitleText": "首页",
-			"navigationBarBackgroundColor":"#00bcd4"
+			"navigationBarBackgroundColor":"#00bcd4",
+			"app-plus":{
+				"scrollIndicator":"none" //当前页面不显示滚动条
+			}
 		}
 	}],
 	"globalStyle": {

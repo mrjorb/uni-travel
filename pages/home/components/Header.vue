@@ -7,7 +7,7 @@
 			</view>
 		</view>
 		<view class="header-right">
-			城市
+			北京
 			<text class="iconfont arrow-icon">&#xe64a;</text>
 		</view>
 	</view>
