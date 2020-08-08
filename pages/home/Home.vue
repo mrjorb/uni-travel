@@ -28,6 +28,14 @@
 		onShow() {
 			this.getHomeInfo();
 		},
+		onPullDownRefresh() {
+			setTimeout(() => {
+				uni.stopPullDownRefresh();
+				uni.showToast({
+					title: '数据更新完成'
+				})
+			},1000)
+		},
 		methods: {
 			getHomeInfo() {
 				this.swiperList = indexData.data.swiperList;
@@ -46,6 +54,6 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>

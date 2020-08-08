@@ -1,6 +1,6 @@
 <template>
 	<view class="header">
-		<view class="header-input">
+		<view class="header-input" @tap="toCity">
 			<view class="iconfont">
 				&#xe632;
 				<text>请输入城市/景点</text>
@@ -15,7 +15,14 @@
 
 <script>
 	export default {
-		name: 'HomeHeader'
+		name: 'HomeHeader',
+		methods: {
+			toCity() {
+				uni.navigateTo({
+					url: '/pages/city/City'
+				})
+			}
+		}
 	}
 </script>
 
