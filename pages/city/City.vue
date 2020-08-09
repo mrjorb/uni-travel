@@ -1,8 +1,8 @@
 <template>
 	<view>
-		<city-search></city-search>
-		<city-list :cities="cities" :hotCities="hotCities"></city-list>
-		<city-alphabet :cities="cities"></city-alphabet>
+		<city-search :cities="cities"></city-search>
+		<city-list :cities="cities" :hotCities="hotCities" :letter="letter"></city-list>
+		<city-alphabet :cities="cities" @change="handleLetterChange" @gotop="handleGotop"></city-alphabet>
 	</view>
 </template>
 
@@ -18,7 +18,8 @@
 		data() {
 			return {
 				cities: {},
-				hotCities: []
+				hotCities: [],
+				letter: '',
 			}
 		},
 		onShow() {
@@ -28,6 +29,12 @@
 			getCityInfo() {
 				this.cities = cityData.data.cities;
 				this.hotCities = cityData.data.hotCities;
+			},
+			handleLetterChange(letter) {
+				this.letter = letter;
+			},
+			handleGotop() {
+				this.scrollTop = 0;
 			}
 		},
 		components:{

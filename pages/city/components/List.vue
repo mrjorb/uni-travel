@@ -1,47 +1,73 @@
 <template>
 	<view class="list">
 		<view>
-			<scroll-view scroll-y="true" class="scroll-wrapper">
+			<scroll-view scroll-y="true" :scroll-top="scrollTop" class="scroll-wrapper">
 				<view>
 					<view class="title border-topbottom">当前城市</view>
 					<view class="btn-list">
 						<view class="btn-wrapper">
-							<view class="btn">北京</view>
+							<view class="btn" style="border-color: #00BCD4;color: #00BCD4;">{{ city }}</view>
 						</view>
 					</view>
 				</view>
 				<view>
 					<view class="title border-topbottom">热门城市</view>
 					<view class="btn-list">
-						<view class="btn-wrapper" v-for="item in hotCities" :key="item.id">
+						<view class="btn-wrapper" v-for="item in hotCities" :key="item.id" @click="handleCityChange(item.name)">
 							<view class="btn">{{ item.name }}</view>
 						</view>
 					</view>
 				</view>
-				<view v-for="(item, key) in cities" :key="key">
-					<view class="title border-topbottom">{{ key }}</view>
-					<view class="item-list">
-						<view class="item border-bottom" v-for="subItem in item" :key="subItem.id">
+				<ul v-for="(item, key) in cities" :key="key">
+					<li class="title border-topbottom" :id="key" :ref="key">{{ key }}</li>
+					<ul class="item-list">
+						<li class="item border-bottom" v-for="subItem in item" :key="subItem.id" @click="handleCityChange(subItem.name)">
 							{{ subItem.name }}
-						</view>
-					</view>
-				</view>
+						</li>
+					</ul>
+				</ul>
 			</scroll-view>
 		</view>
 	</view>
 </template>
 
 <script>
+	import { mapState, mapMutations } from 'vuex'
 	export default {
 		name: 'CityList',
 		props: {
 			cities: Object,
-			hotCities: Array
+			hotCities: Array,
+			letter: String
+		},
+		data() {
+			return {
+				scrollTop: 0
+			}
+		},
+		computed: {
+			letters() {
+				const letters = [];
+				for (let i in this.cities) {
+					letters.push(i);
+				}
+				return letters;
+			},
+			...mapState(['city'])
+		},
+		watch: {
+			letter(newVal) {
+				const element = this.$refs[newVal][0];
+				// const element = document.getElementById(newVal);
+				this.scrollTop = element.offsetTop;
+			}
 		},
 		methods: {
-			back() {
+			handleCityChange(city) {
+				this.changeCity(city)
 				uni.navigateBack()
-			}
+			},
+			...mapMutations(['changeCity'])
 		}
 	}
 </script>

@@ -7,15 +7,21 @@
 			</view>
 		</view>
 		<view class="header-right">
-			北京
+			{{ currentCity }}
 			<text class="iconfont arrow-icon">&#xe64a;</text>
 		</view>
 	</view>
 </template>
 
 <script>
+	import { mapState } from 'vuex'
 	export default {
 		name: 'HomeHeader',
+		computed: {
+			...mapState({
+				currentCity: 'city'
+			})
+		},
 		methods: {
 			toCity() {
 				uni.navigateTo({
@@ -49,7 +55,8 @@
 		}
 		.header-right {
 			float: right;
-			width: 140rpx;
+			min-width: 100rpx;
+			padding: 0 10rpx;
 			text-align: center;
 			.arrow-icon {
 				margin-left: 5rpx;

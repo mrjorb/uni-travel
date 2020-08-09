@@ -34,7 +34,7 @@
 				uni.showToast({
 					title: '数据更新完成'
 				})
-			},1000)
+			}, 100)
 		},
 		methods: {
 			getHomeInfo() {
